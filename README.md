@@ -53,6 +53,9 @@ Command Line Arguments
 
 ## Images
 
+Formcentric base images build upon the official [Adoptium](https://adoptium.net) images of the Eclipse Temurin
+distribution (OpenJDK) and come in the following flavors:
+
 ### Java 17
 
 - `ghcr.io/formcentric/java-base:17-jre`
