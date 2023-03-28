@@ -51,6 +51,19 @@ Command Line Arguments
   (1) --server.port=8443
 ```
 
+### Custom image
+
+To run your own application with the base image, just overwrite the default `/formcentric/app.jar` in your
+own Dockerfile:
+
+```Dockerfile
+FROM ghcr.io/formcentric/java-base:17-jre
+
+EXPOSE 8080
+
+COPY --chown=formcentric:formcentric my-application.jar /formcentric/app.jar
+```
+
 ## Images
 
 Formcentric base images build upon the official [Adoptium](https://adoptium.net) images of the Eclipse Temurin
