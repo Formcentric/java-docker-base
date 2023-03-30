@@ -1,6 +1,7 @@
 name: Temurin 17
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - 'main'
