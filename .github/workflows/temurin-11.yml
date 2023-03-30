@@ -2,6 +2,8 @@ name: Temurin 11
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '21 21 * * *'
   push:
     branches:
       - 'main'
