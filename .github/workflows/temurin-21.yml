@@ -1,0 +1,28 @@
+name: Temurin 21
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '21 21 * * *'
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  build-and-push-jre:
+    uses: ./.github/workflows/workflow-docker-build.yml
+    with:
+      jvm-type: jre
+      docker-context: temurin/21
+    permissions:
+      contents: read
+      packages: write
+
+  build-and-push-jdk:
+    uses: ./.github/workflows/workflow-docker-build.yml
+    with:
+      jvm-type: jdk
+      docker-context: temurin/21
+    permissions:
+      contents: read
+      packages: write
