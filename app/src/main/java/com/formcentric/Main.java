@@ -16,6 +16,8 @@ public class Main {
         System.out.println();
         System.out.println("  User Name     : " + System.getProperty("user.name"));
         System.out.println("  Working Dir   : " + System.getProperty("user.dir"));
+        System.out.println("  OS            : " + System.getProperty("os.name") + " " + System.getProperty("os.version"));
+        System.out.println("  Architecture  : " + System.getProperty("os.arch"));
         System.out.println();
 
         // JVM arguments

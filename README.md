@@ -12,19 +12,23 @@ The base image contains a simple `app.jar` to demonstrate the default entrypoint
 Running the image without any arguments:
 
 ```
-> docker run ghcr.io/formcentric/java-base:11-jre
+> docker run ghcr.io/formcentric/java-base:21-jre
 
 Welcome to the Formcentric Java Base image.
 
-  Java Version  : 11.0.18 (Eclipse Adoptium)
+  Java Version  : 21.0.6 (Eclipse Adoptium)
   Java Home     : /opt/java/openjdk
   Java Temp Dir : /tmp
 
   User Name     : formcentric
   Working Dir   : /formcentric
+  OS            : Linux 6.11.0-18-generic
+  Architecture  : amd64
 
 JVM Arguments
-  - none -
+  (1) -XX:-UsePerfData
+  (2) -XX:+UseContainerSupport
+  (3) -Djava.security.egd=file:/dev/./urandom
 
 Command Line Arguments
   - none -
@@ -33,19 +37,24 @@ Command Line Arguments
 Passing JVM and command line arguments:
 
 ```
-> docker run -e JAVA_OPTS=-Djava.io.tmpdir=/my-tmp ghcr.io/formcentric/java-base:11-jre --server.port=8443
+> docker run -e JAVA_OPTS=-Djava.io.tmpdir=/my-tmp ghcr.io/formcentric/java-base:21-jre --server.port=8443
 
 Welcome to the Formcentric Java Base image.
 
-  Java Version  : 11.0.18 (Eclipse Adoptium)
+  Java Version  : 21.0.6 (Eclipse Adoptium)
   Java Home     : /opt/java/openjdk
   Java Temp Dir : /my-tmp
 
   User Name     : formcentric
   Working Dir   : /formcentric
+  OS            : Linux 6.11.0-18-generic
+  Architecture  : amd64
 
 JVM Arguments
-  (1) -Djava.io.tmpdir=/my-tmp
+  (1) -XX:-UsePerfData
+  (2) -Djava.io.tmpdir=/my-tmp
+  (3) -XX:+UseContainerSupport
+  (4) -Djava.security.egd=file:/dev/./urandom
 
 Command Line Arguments
   (1) --server.port=8443
