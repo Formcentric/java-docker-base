@@ -1,7 +1,9 @@
 ARG JVM_TYPE=jre
 ARG JAVA_VERSION=11.0.26_4
-ARG TEMURIN_VERSION=${JAVA_VERSION}-${JVM_TYPE}-jammy
+ARG TEMURIN_VERSION=${JAVA_VERSION}-${JVM_TYPE}-noble
 FROM eclipse-temurin:${TEMURIN_VERSION}
+
+RUN userdel -r ubuntu
 
 RUN apt-get update && \
     apt-get upgrade -y && \
