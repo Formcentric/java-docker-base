@@ -78,10 +78,10 @@ COPY --chown=formcentric:formcentric my-application.jar /formcentric/app.jar
 Formcentric base images build upon the official [Adoptium](https://adoptium.net) images of the Eclipse Temurin
 distribution (OpenJDK) and come in the following flavors:
 
-### Java 23 (Until 18 Mar 2025)
+### Java 24 (Until 16 Sep 2025)
 
-- `ghcr.io/formcentric/java-base:23-jre`
-- `ghcr.io/formcentric/java-base:23-jdk`
+- `ghcr.io/formcentric/java-base:24-jre`
+- `ghcr.io/formcentric/java-base:24-jdk`
 
 ### Java 21
 
