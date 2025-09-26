@@ -1,4 +1,4 @@
-name: Temurin 24
+name: Temurin 25
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ jobs:
     uses: ./.github/workflows/workflow-docker-build.yml
     with:
       jvm-type: jre
-      docker-context: temurin/24
+      docker-context: temurin/25
     permissions:
       contents: read
       packages: write
@@ -22,7 +22,7 @@ jobs:
     uses: ./.github/workflows/workflow-docker-build.yml
     with:
       jvm-type: jdk
-      docker-context: temurin/24
+      docker-context: temurin/25
     permissions:
       contents: read
       packages: write
