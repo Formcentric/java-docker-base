@@ -1,4 +1,4 @@
-name: Keep Workflow
+name: Keep Workflows alive
 
 on:
   schedule:
