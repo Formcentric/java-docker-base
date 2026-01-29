@@ -66,7 +66,7 @@ To run your own application with the base image, just overwrite the default `/fo
 own Dockerfile:
 
 ```Dockerfile
-FROM ghcr.io/formcentric/java-base:17-jre
+FROM ghcr.io/formcentric/java-base:25-jre
 
 EXPOSE 8080
 
@@ -78,10 +78,10 @@ COPY --chown=formcentric:formcentric my-application.jar /formcentric/app.jar
 Formcentric base images build upon the official [Adoptium](https://adoptium.net) images of the Eclipse Temurin
 distribution (OpenJDK) and come in the following flavors:
 
-### Java 24 (Until 16 Sep 2025)
+### Java 25
 
-- `ghcr.io/formcentric/java-base:24-jre`
-- `ghcr.io/formcentric/java-base:24-jdk`
+- `ghcr.io/formcentric/java-base:25-jre`
+- `ghcr.io/formcentric/java-base:25-jdk`
 
 ### Java 21
 
@@ -92,8 +92,3 @@ distribution (OpenJDK) and come in the following flavors:
 
 - `ghcr.io/formcentric/java-base:17-jre`
 - `ghcr.io/formcentric/java-base:17-jdk`
-
-### Java 11
-
-- `ghcr.io/formcentric/java-base:11-jre`
-- `ghcr.io/formcentric/java-base:11-jdk`
