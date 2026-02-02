@@ -3,6 +3,9 @@ name: Keep Workflows alive
 on:
   schedule:
     - cron: "0 0 1 * *" # every 1st of the month
+  push:
+    branches:
+      - 'main'
 
 jobs:
   keepalive-job:
