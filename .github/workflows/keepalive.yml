@@ -1,8 +1,9 @@
 name: Keep Workflows alive
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: "0 0 1 * *" # every 1st of the month
+    - cron: '20 21 * * *'
   push:
     branches:
       - 'main'
