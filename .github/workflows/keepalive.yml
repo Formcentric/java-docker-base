@@ -1,5 +1,4 @@
 name: Keep Workflows alive
-
 on:
   workflow_dispatch:
   schedule:
@@ -15,16 +14,28 @@ jobs:
     permissions:
       actions: write
     steps:
-      - uses: actions/checkout@v6
-      - name: Re-enable workflow
+      - name: Re-enable all active workflows
         env:
-          GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN || github.token }}
-        shell: sh
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
         run: |
-          case "${GITHUB_WORKFLOW_REF:?}" in
-            "${GITHUB_REPOSITORY:?}"/.github/workflows/*.y*ml@*) ;;
-            *) false ;;
-          esac
-          workflow="${GITHUB_WORKFLOW_REF%%@*}"
-          workflow="${workflow#${GITHUB_REPOSITORY}/.github/workflows/}"
-          gh api -X PUT "repos/${GITHUB_REPOSITORY}/actions/workflows/${workflow}/enable"
+          set -euo pipefail
+
+          echo "Fetching active workflows for ${GITHUB_REPOSITORY}..."
+
+          workflow_ids=$(gh api --paginate \
+            "repos/${GITHUB_REPOSITORY}/actions/workflows" \
+            --jq '.workflows[] | select(.state=="active") | .id')
+
+          if [ -z "$workflow_ids" ]; then
+            echo "No active workflows found."
+            exit 0
+          fi
+
+          echo "$workflow_ids" | while read -r id; do
+            name=$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/${id}" --jq '.name')
+            echo "Re-enabling workflow: ${name} (ID: ${id})"
+            gh api -X PUT "repos/${GITHUB_REPOSITORY}/actions/workflows/${id}/enable"
+          done
+
+          echo "Done."
