@@ -75,8 +75,8 @@ COPY --chown=formcentric:formcentric my-application.jar /formcentric/app.jar
 
 ## Images
 
-Formcentric base images build upon the official [Adoptium](https://adoptium.net) images of the Eclipse Temurin
-distribution (OpenJDK) and come in the following flavors:
+Formcentric base images are built directly from the official Eclipse Temurin (OpenJDK) binaries published by
+[Adoptium](https://adoptium.net) and come in the following flavors:
 
 ### Java 25
 
@@ -92,3 +92,16 @@ distribution (OpenJDK) and come in the following flavors:
 
 - `ghcr.io/formcentric/java-base:17-jre`
 - `ghcr.io/formcentric/java-base:17-jdk`
+
+## Development
+
+Each `temurin/<version>/` directory holds the JVM install steps needed to build our own image, but no
+Dockerfile — it is generated at build time by vendoring the matching build steps from
+[adoptium/containers](https://github.com/adoptium/containers) and appending `temurin/Dockerfile.footer`.
+To build a Dockerfile locally, e.g. for Java 21 JDK:
+
+```
+> scripts/generate-temurin-dockerfile.sh 21 jdk temurin/21
+> cp app/target/app.jar temurin/21
+> docker build temurin/21
+```
