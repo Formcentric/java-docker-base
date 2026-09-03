@@ -14,7 +14,7 @@ JVM_TYPE="$2"
 CONTEXT_DIR="$3"
 
 ADOPTIUM_CONTAINERS_REF="${ADOPTIUM_CONTAINERS_REF:-main}"
-UPSTREAM_PATH="${JAVA_MAJOR_VERSION}/${JVM_TYPE}/ubuntu/noble/Dockerfile"
+UPSTREAM_PATH="${JAVA_MAJOR_VERSION}/${JVM_TYPE}/ubuntu/resolute/Dockerfile"
 UPSTREAM_URL="https://raw.githubusercontent.com/adoptium/containers/${ADOPTIUM_CONTAINERS_REF}/${UPSTREAM_PATH}"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
